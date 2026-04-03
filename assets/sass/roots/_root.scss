@@ -1,0 +1,230 @@
+@font-face {
+	font-family: "Montserrat";
+	src: url(../fonts/Montserrat-Regular.ttf);
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: "Montserrat";
+	src: url(../fonts/Montserrat-Medium.ttf);
+	font-weight: 500;
+}
+@font-face {
+	font-family: "Montserrat";
+	src: url(../fonts/Montserrat-SemiBold.ttf);
+	font-weight: 600;
+}
+@font-face {
+	font-family: "Montserrat";
+	src: url(../fonts/Montserrat-Bold.ttf);
+	font-weight: 700;
+}
+
+* {
+	font-family: "Montserrat", sans-serif;
+}
+
+$color-primary:   #1C2A46;
+$color-secondary: #00C4BE;
+$color-third:     #223457;
+$color-white:     #FFFFFF;
+$color-silver:    #F4F4F4;
+$color-disabled:  #7E8F8F;
+
+// Breakpoints
+$bp-table-full: 1024px;
+$bp-tablet: 768px;
+$bp-mobile: 414px;
+
+// ─── Heading mixins ───────────────────────────────────────────────
+
+@mixin h1 {
+	font-weight: 500;
+	font-size: 60px;
+	line-height: 120%;
+	letter-spacing: normal;
+
+	@media (max-width: $bp-tablet) {
+		font-size: 48px;
+	}
+
+	@media (max-width: $bp-mobile) {
+		font-size: 32px;
+	}
+}
+
+@mixin h2 {
+	font-weight: 500;
+	font-size: 36px;
+	line-height: 130%;
+	letter-spacing: 0.06em;
+
+	@media (max-width: $bp-tablet) {
+		font-size: 32px;
+	}
+
+	@media (max-width: $bp-mobile) {
+		font-size: 26px;
+		letter-spacing: 0.03em;
+	}
+}
+
+@mixin h3 {
+	font-weight: 500;
+	font-size: 30px;
+	line-height: 130%;
+	letter-spacing: 0.06em;
+
+	@media (max-width: $bp-tablet) {
+		font-size: 28px;
+	}
+
+	@media (max-width: $bp-mobile) {
+		font-size: 24px;
+		letter-spacing: 0.04em;
+	}
+}
+
+@mixin h4 {
+	font-weight: 600;
+	font-size: 24px;
+	line-height: 160%;
+	letter-spacing: 0.02em;
+
+	@media (max-width: $bp-tablet) {
+		font-size: 22px;
+	}
+
+	@media (max-width: $bp-mobile) {
+		letter-spacing: 0.04em;
+	}
+}
+
+@mixin h5 {
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 160%;
+	letter-spacing: 0.02em;
+
+	@media (max-width: $bp-tablet) {
+		font-size: 18px;
+	}
+}
+
+// ─── Body text mixins ─────────────────────────────────────────────
+
+@mixin p1        { font-weight: 400; font-size: 18px; line-height: 160%; letter-spacing: 0.02em; }
+@mixin p1-medium { font-weight: 500; font-size: 18px; line-height: 160%; letter-spacing: normal; }
+@mixin p1-bold   { font-weight: 700; font-size: 18px; line-height: 160%; letter-spacing: normal; }
+
+@mixin p2        { font-weight: 400; font-size: 16px; line-height: 165%; letter-spacing: 0.02em; }
+@mixin p2-medium { font-weight: 500; font-size: 16px; line-height: 165%; letter-spacing: 0.02em; }
+@mixin p2-semi   { font-weight: 600; font-size: 16px; line-height: 165%; letter-spacing: 0.02em; }
+@mixin p2-bold   { font-weight: 700; font-size: 16px; line-height: 165%; letter-spacing: 0.02em; }
+
+@mixin p3        { font-weight: 400; font-size: 14px; line-height: 150%; letter-spacing: normal; }
+@mixin p3-medium { font-weight: 500; font-size: 14px; line-height: 150%; letter-spacing: 0.01em; }
+@mixin p3-semi   { font-weight: 600; font-size: 14px; line-height: 130%; letter-spacing: normal; }
+@mixin p3-bold   { font-weight: 700; font-size: 14px; line-height: 120%; letter-spacing: normal; }
+
+// ─── Apply headings to tags ───────────────────────────────────────
+
+h1 { @include h1; }
+h2 { @include h2; }
+h3 { @include h3; }
+h4 { @include h4; }
+h5 { @include h5; }
+
+
+// ─── Buttons ──────────────────────────────────────────────────────
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 19px 30px;
+	@include p3-bold;
+	text-transform: uppercase;
+	color: $color-white;
+	border: none;
+	cursor: pointer;
+	text-decoration: none;
+
+	&--secondary { background-color: $color-secondary; }
+	&--third     { background-color: $color-third; }
+	&--disabled  { background-color: $color-disabled; }
+
+	&--sm {
+		padding: 10px;
+	}
+
+	&__icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 34px;
+		height: 34px;
+		background-color: rgba($color-white, 0.15);
+
+		svg, img { width: 16px; height: 16px; }
+	}
+}
+
+
+.container {
+	padding: 0 20px;
+	max-width: 1340px;
+	width: 100%;
+	margin: 0 auto;
+}
+.container-l {
+	max-width: 1440px;
+	padding: 0 20px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.page-article .container{
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	& * {
+		color: $color-primary;
+	}
+	& p {
+		@include p1-medium;
+	}
+}
+
+.page-article ul,
+.entry-content ul,
+.wp-block-list,
+main ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+
+	li {
+		@include p1-medium;
+		color: $color-third;
+		display: flex;
+		align-items: flex-start;
+		gap: 16px;
+
+		&::before {
+			content: '';
+			display: inline-block;
+			width: 24px;
+			height: 24px;
+			background-image: url('../images/ul-arrow.svg');
+			background-size: contain;
+			background-repeat: no-repeat;
+			flex-shrink: 0;
+			margin-top: 2px;
+		}
+	}
+}

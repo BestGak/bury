@@ -1,0 +1,82 @@
+@use './roots/' as *;
+
+.breadcrumbs {
+	position: relative;
+	height: 400px;
+	display: flex;
+	align-items: flex-end;
+	background-color: #fff;
+	background-size: cover;
+	background-position: center;
+
+	&::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+	}
+
+	@media (max-width: $bp-tablet) {
+		height: 310px;
+	}
+    & h1 {
+        color: $color-primary;
+    }
+}
+
+.breadcrumbs__inner {
+	position: relative;
+	z-index: 1;
+	padding-bottom: 32px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+
+	@media (max-width: $bp-tablet) {
+		padding-bottom: 24px;
+	}
+}
+
+.breadcrumbs__nav {
+	display: flex;
+	align-items: center;
+    & > span {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        align-items: center
+    }
+	// Yoast & fallback общие стили
+	a, span, .breadcrumb_last {
+		@include p3;
+		color: $color-primary;
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: $color-secondary;
+	}
+
+	// активный (текущий) элемент
+	.breadcrumb_last,
+	span[aria-current] {
+		color: $color-primary
+	}
+
+	.breadcrumb-separator,
+	> span > span {
+		display: inline-flex;
+		align-items: center;
+		color: $color-primary;
+
+		svg {
+			width: 14px;
+			height: 14px;
+		}
+	}
+}
+
+.breadcrumbs__title {
+	@include h1;
+	color: $color-primary;
+	margin: 0;
+}

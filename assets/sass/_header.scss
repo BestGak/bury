@@ -1,0 +1,350 @@
+@use './roots/' as *;
+
+// ─── TOP BAR ─────────────────────────────────────────────────────
+
+.header {
+	position: fixed;
+	width: 100%;
+	top: 20px;
+	z-index: 100;
+	@media screen and (max-width: $bp-table-full) {
+		top: 0;
+		left: 0;
+	}
+	& .container-l {
+		@media screen and (max-width: $bp-table-full) {
+			padding: 0;
+		}
+	}
+}
+
+.header__topbar {
+	background-color: $color-third;
+	color: $color-white;
+}
+
+.header__topbar-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	@media screen and (max-width: $bp-table-full) {
+		display: none;
+	}
+}
+
+// Socials
+.header__socials {
+	display: flex;
+	align-items: center;
+}
+
+.header__social-link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	border: 1px solid rgba($color-white, 0.3);
+	color: $color-white;
+	text-decoration: none;
+	transition: border-color 0.2s;
+
+	&:hover {
+		border-color: $color-secondary;
+		color: $color-secondary;
+	}
+}
+
+// Contacts
+.header__contacts {
+	display: flex;
+	align-items: center;
+	gap: 32px;
+}
+
+.header__contact-item {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	text-decoration: none;
+	color: $color-white;
+}
+
+.header__contact-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	border: 1px solid rgba($color-white, 0.3);
+	flex-shrink: 0;
+}
+
+.header__contact-text {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+
+	strong {
+		@include p3-semi;
+		color: $color-white;
+	}
+
+	span {
+		@include p3;
+		color: rgba($color-white, 0.7);
+	}
+}
+
+// ─── MAIN NAV ────────────────────────────────────────────────────
+
+.header__main {
+	display: flex;
+	align-items: stretch;
+	background-color: $color-white;
+	box-shadow: 0 0 170px 0 rgba(28, 42, 70, 0.07), 0 0 74.109px 0 rgba(28, 42, 70, 0.05), 0 0 27.625px 0 rgba(28, 42, 70, 0.04), 0 0 9.828px 0 rgba(28, 42, 70, 0.02);
+	@media screen and (max-width: $bp-table-full) {
+		padding: 10px;
+	}
+}
+
+.header__logo-wrap {
+	background-color: $color-secondary;
+	display: flex;
+	align-items: center;
+	max-width: 240px;
+	width: 100%;
+	& .header__logo {
+		width: 100%;
+		height: 100%;
+		& img {
+			width: 100%;
+		}
+	}
+}
+
+.header__logo {
+	display: flex;
+	align-items: center;
+
+	img {
+		display: block;
+		height: 60px;
+		width: auto;
+	}
+}
+
+.header__nav {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	padding: 0 32px;
+	justify-content: center;
+	@media (max-width: $bp-table-full) {
+		display: none;
+	}
+}
+
+.header__nav-list {
+	display: flex;
+	align-items: center;
+	gap: 0;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.header__nav-item,
+.header__nav-list > .menu-item {
+	display: flex;
+	align-items: center;
+
+	&:not(:last-child)::after {
+		content: '';
+		display: block;
+		width: 1px;
+		height: 16px;
+		background-color: rgba($color-third, 0.3);
+		margin: 0 24px;
+	}
+}
+
+.header__nav-link,
+.header__nav-list > .menu-item > a {
+	@include p3-semi;
+	text-transform: uppercase;
+	color: $color-third;
+	text-decoration: none;
+	white-space: nowrap;
+	transition: color 0.2s;
+
+	&:hover {
+		color: $color-secondary;
+	}
+}
+
+.header__nav-list > .current-menu-item > a,
+.header__nav-list > .current-menu-ancestor > a {
+	color: $color-secondary;
+}
+
+.header__cta {
+	flex-shrink: 0;
+	align-self: stretch;
+	display: flex;
+	align-items: center;
+	margin: 10px 15px 10px 0;
+	@media (max-width: $bp-table-full) {
+		display: none;
+	}
+}
+
+// ─── BURGER ──────────────────────────────────────────────────────
+
+.header__burger {
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	width: 52px;
+	height: 52px;
+	background-color: $color-third;
+	border: none;
+	cursor: pointer;
+	margin-left: auto;
+	flex-shrink: 0;
+
+	span {
+		display: block;
+		width: 22px;
+		height: 2px;
+		background-color: $color-white;
+	}
+
+	@media (max-width: $bp-table-full) {
+		display: flex;
+	}
+}
+
+// ─── MOBILE MENU ─────────────────────────────────────────────────
+
+.header__mobile-menu {
+	transition: all .5s;
+	transform: translateX(-100vw);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 200;
+	overflow-y: auto;
+	flex-direction: column;
+	background-color: $color-silver;
+
+	&.is-open {
+		transform: translateX(0vw);
+	}
+}
+
+.header__mobile-top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 16px 20px;
+	background-color: $color-white;
+}
+
+.header__mobile-close {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 52px;
+	height: 52px;
+	background-color: $color-third;
+	border: none;
+	cursor: pointer;
+	color: $color-white;
+	flex-shrink: 0;
+}
+
+.header__mobile-nav {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	padding: 40px 20px 32px;
+}
+
+.header__mobile-nav-list {
+	list-style: none;
+	margin: 0 0 32px;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.header__mobile-nav-link,
+.header__mobile-nav-list > .menu-item > a {
+	display: block;
+	padding: 18px 0;
+	@include p2-semi;
+	text-transform: uppercase;
+	color: $color-third;
+	text-decoration: none;
+	border-bottom: 1px solid rgba($color-third, 0.1);
+	&:hover {
+		color: $color-secondary;
+	}
+	@media screen and (max-width: $bp-table-full) {
+		border: none;
+	}
+}
+
+.header__mobile-nav-list > .menu-item:first-child > a {
+	border-top: 1px solid rgba($color-third, 0.1);
+	@media screen and (max-width: $bp-table-full) {
+		border: none;
+	}
+}
+
+.header__mobile-nav-list > .current-menu-item > a,
+.header__mobile-nav-list > .current-menu-ancestor > a {
+	color: $color-secondary;
+}
+
+.header__mobile-cta {
+	width: 100%;
+	justify-content: center;
+}
+
+.header__mobile-bottom {
+	background-color: $color-third;
+	padding: 32px 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+
+	.header__socials {
+		gap: 0;
+	}
+
+	.header__contact-item {
+		gap: 16px;
+	}
+}
+
+// ─── OVERLAY ─────────────────────────────────────────────────────
+
+.header__overlay {
+	display: none;
+	position: fixed;
+	inset: 0;
+	background-color: rgba($color-primary, 0.5);
+	z-index: 199;
+
+	&.is-open {
+		display: block;
+	}
+}

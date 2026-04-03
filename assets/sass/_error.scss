@@ -1,0 +1,52 @@
+@use './roots/' as *;
+
+.error {
+	min-height: calc(100vh + 120px);
+	display: flex;
+	align-items: center;
+	background-color: $color-white;
+	@media screen and (max-width: $bp-tablet) {
+		min-height: 85vh;
+	}
+}
+
+.error__inner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	padding-top: 60px;
+	padding-bottom: 60px;
+}
+
+.error__img {
+	width: 100%;
+	max-width: 400px;
+	height: auto;
+	margin-bottom: 32px;
+
+	@media (max-width: $bp-tablet) {
+		max-width: 260px;
+	}
+}
+
+.error__title {
+	@include h2;
+	color: $color-third;
+	margin: 0 0 16px;
+}
+
+.error__text {
+	@include p1;
+	color: rgba($color-third, 0.7);
+	margin: 0 0 40px;
+
+	@media (max-width: $bp-tablet) {
+		max-width: 100%;
+	}
+}
+
+.error__btn {
+	justify-content: center;
+	gap: 16px;
+}
