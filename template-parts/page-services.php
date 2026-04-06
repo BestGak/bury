@@ -25,9 +25,7 @@ $services_query = new WP_Query( [
             <div class="services__head">
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/quote.svg" alt="" aria-hidden="true">
                 <h2 class="services__title"><?php echo esc_html( get_the_title() ); ?></h2>
-                <?php if ( get_the_excerpt() ) : ?>
-                <p class="services__subtitle"><?php echo esc_html( get_the_excerpt() ); ?></p>
-                <?php endif; ?>
+                <p class="services__subtitle"><?= __('Specialist drylining and interior finishing services supporting commercial developments and residential projects across Manchester and Greater Manchester.' , 'bury') ?></p>
             </div>
 
             <div class="services__grid">

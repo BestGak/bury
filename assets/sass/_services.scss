@@ -42,9 +42,8 @@
 }
 
 .services__subtitle {
-	@include p2;
+	@include p1;
 	color: rgba($color-white, 0.7);
-	max-width: 720px;
 	margin: 0;
 }
 
