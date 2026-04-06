@@ -248,3 +248,10 @@ main ul {
 		}
 	}
 }
+
+.mb-m {
+	margin-bottom: 80px;
+	@media screen and (max-width: $bp-tablet) {
+		margin-bottom: 64px;
+	}
+}

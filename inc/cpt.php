@@ -27,6 +27,33 @@ function bury_register_cpt_projects() {
     ] );
 }
 
+// ─── CPT: Services ────────────────────────────────────────────────
+
+add_action( 'init', 'bury_register_cpt_services' );
+function bury_register_cpt_services() {
+    register_post_type( 'services', [
+        'labels' => [
+            'name'               => __( 'Services', 'bury' ),
+            'singular_name'      => __( 'Service', 'bury' ),
+            'add_new'            => __( 'Add new', 'bury' ),
+            'add_new_item'       => __( 'Add new service', 'bury' ),
+            'edit_item'          => __( 'Edit service', 'bury' ),
+            'new_item'           => __( 'New service', 'bury' ),
+            'view_item'          => __( 'View service', 'bury' ),
+            'search_items'       => __( 'Search services', 'bury' ),
+            'not_found'          => __( 'No services found', 'bury' ),
+            'not_found_in_trash' => __( 'No services in trash', 'bury' ),
+        ],
+        'public'             => true,
+        'publicly_queryable' => true,
+        'has_archive'        => false,
+        'show_in_rest'       => true,
+        'menu_icon'          => 'dashicons-hammer',
+        'supports'           => [ 'title', 'editor', 'thumbnail', 'excerpt' ],
+        'rewrite'            => [ 'slug' => 'services', 'with_front' => false ],
+    ] );
+}
+
 // ─── Taxonomy: Project Categories ────────────────────────────────
 
 add_action( 'init', 'bury_register_taxonomy_project_category' );
@@ -48,3 +75,4 @@ function bury_register_taxonomy_project_category() {
         'rewrite'           => false,   
     ] );
 }
+

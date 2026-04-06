@@ -1,0 +1,190 @@
+@use './roots/' as *;
+
+// ─── Services Section ─────────────────────────────────────────────────────────
+
+.services {
+    background-color: #1c2a46;
+    background-image: url(../images/services.webp);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 900px 100%;
+    padding: 80px 0;
+
+	@media (max-width: $bp-tablet) {
+		padding: 50px 0;
+		background-size: auto 30%;
+	}
+}
+
+.services__head {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px;
+	margin-bottom: 56px;
+	text-align: center;
+
+	img {
+		width: 40px;
+		height: auto;
+	}
+
+	@media (max-width: $bp-tablet) {
+		margin-bottom: 36px;
+	}
+}
+
+.services__title {
+	@include h2;
+	color: $color-white;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+.services__subtitle {
+	@include p2;
+	color: rgba($color-white, 0.7);
+	max-width: 720px;
+	margin: 0;
+}
+
+// ─── Grid ─────────────────────────────────────────────────────────────────────
+
+.services__grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 24px;
+
+	@media (max-width: $bp-tablet) {
+		grid-template-columns: 1fr;
+		gap: 16px;
+	}
+}
+
+// ─── Service Card ─────────────────────────────────────────────────────────────
+
+.service-card {
+	display: grid;
+	grid-template-columns: repeat(2 , 1fr);
+	gap: 0;
+	background: $color-third;
+
+	@media (max-width: $bp-table-full) {
+        grid-template-columns: 1fr;
+
+	}
+    & a {
+        width: 100%;
+    }
+}
+
+.service-card__img-wrap {
+	display: block;
+	overflow: hidden;
+    padding: 10px;
+	@media (max-width: $bp-tablet) {
+		aspect-ratio: 16 / 9;
+	}
+}
+
+.service-card__img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	transition: transform 0.4s;
+
+	.service-card__img-wrap:hover & {
+		transform: scale(1.04);
+	}
+}
+
+.service-card__body {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 14px;
+	justify-content: space-between;
+
+	@media (max-width: $bp-table-full) {
+		padding: 20px 24px;
+	}
+
+	@media (max-width: $bp-tablet) {
+		padding: 20px;
+	}
+}
+
+.service-card__title {
+	@include h5;
+	color: $color-white;
+	text-transform: uppercase;
+	margin: 0;
+	flex: 0;
+
+	a {
+		color: inherit;
+		text-decoration: none;
+
+		&:hover {
+			color: $color-secondary;
+		}
+	}
+}
+
+.service-card__excerpt {
+	@include p3;
+	color: rgba($color-white, 0.65);
+	margin: 0;
+	flex: 1;
+}
+
+a.service-card__btn {
+	align-self: flex-start;
+	margin-top: auto;
+    width: fit-content;
+    transition: all .5s;
+    &:hover{
+        background: #00514F;
+        color: #fff;
+    }
+}
+
+// ─── Footer CTA ───────────────────────────────────────────────────────────────
+
+.services__footer {
+	display: flex;
+	justify-content: center;
+	margin-top: 56px;
+
+	@media (max-width: $bp-tablet) {
+		margin-top: 36px;
+	}
+}
+
+.btn--outline {
+	background: transparent;
+	border: 1px solid var(--White, #FFF);
+    background: var(--Third, #223457);
+	color: $color-white;
+	justify-content: center;
+	padding: 19px 40px;
+	transition: background 0.3s, color 0.3s;
+
+	&:hover {
+		background: #16223B;
+        border-color: transparent;
+	}
+
+	.btn__icon {
+		background: transparent;
+
+		svg path {
+			stroke: $color-white;
+		}
+	}
+
+	&:hover .btn__icon svg path {
+		stroke: $color-primary;
+	}
+}

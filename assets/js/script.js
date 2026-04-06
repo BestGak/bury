@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	initFormSuccess();
 	initProjectsAjax();
 	initSimilarProjectsSwiper();
+	initFaqAccordion();
 });
 
 
@@ -140,6 +141,25 @@ function initProjectsAjax() {
 	});
 
 	bindPagination();
+}
+
+function initFaqAccordion() {
+	document.querySelectorAll('.faq-item__trigger').forEach(function (trigger) {
+		trigger.addEventListener('click', function () {
+			const item = trigger.closest('.faq-item');
+			const isOpen = item.classList.contains('is-open');
+
+			document.querySelectorAll('.faq-item.is-open').forEach(function (openItem) {
+				openItem.classList.remove('is-open');
+				openItem.querySelector('.faq-item__trigger').setAttribute('aria-expanded', 'false');
+			});
+
+			if (!isOpen) {
+				item.classList.add('is-open');
+				trigger.setAttribute('aria-expanded', 'true');
+			}
+		});
+	});
 }
 
 function initSimilarProjectsSwiper() {

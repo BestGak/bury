@@ -1,1 +1,135 @@
 @use './roots/' as *;
+
+// ─── FAQ Section ──────────────────────────────────────────────────────────────
+
+.faq-section {
+	padding: 80px 0;
+	background: $color-silver;
+
+	@media (max-width: $bp-tablet) {
+		padding: 50px 0;
+	}
+}
+
+.faq-section__head {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 12px;
+	margin-bottom: 48px;
+	text-align: center;
+
+	img {
+		width: 40px;
+		height: auto;
+	}
+
+	@media (max-width: $bp-tablet) {
+		margin-bottom: 32px;
+	}
+}
+
+.faq-section__title {
+	@include h2;
+	color: $color-primary;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+// ─── FAQ List ─────────────────────────────────────────────────────────────────
+
+.faq-section__list {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+// ─── FAQ Item ─────────────────────────────────────────────────────────────────
+
+.faq-item {
+	background: $color-white;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.faq-item__trigger {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+	width: 100%;
+	padding: 24px 28px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	text-align: left;
+
+	@media (max-width: $bp-tablet) {
+		padding: 18px 20px;
+	}
+}
+
+.faq-item__question {
+	@include p2-semi;
+	color: $color-primary;
+	text-transform: uppercase;
+	flex: 1;
+}
+
+.faq-item__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: 40px;
+	height: 40px;
+	background: $color-primary;
+	transition: background 0.3s;
+    & svg {
+        transition: all .5s;
+    }
+	.faq-item__icon-minus {
+		display: none;
+	}
+}
+
+// ─── Open state ───────────────────────────────────────────────────────────────
+
+.faq-item.is-open {
+	.faq-item__icon {
+		background: $color-secondary;
+        & svg {
+            transform: rotate(180deg);
+        }
+	}
+}
+
+// ─── Body (accordion) ─────────────────────────────────────────────────────────
+
+.faq-item__body {
+	display: grid;
+	grid-template-rows: 0fr;
+	transition: grid-template-rows 0.35s ease;
+}
+
+.faq-item.is-open .faq-item__body {
+	grid-template-rows: 1fr;
+}
+
+.faq-item__answer {
+	overflow: hidden;
+	@include p2;
+	color: $color-primary;
+	padding: 0 28px;
+
+	.faq-item.is-open & {
+		padding: 0 28px 24px;
+	}
+
+	@media (max-width: $bp-tablet) {
+		padding: 0 20px;
+		.faq-item.is-open & {
+			padding: 0 20px 20px;
+		}
+	}
+}

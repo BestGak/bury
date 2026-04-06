@@ -406,6 +406,12 @@
 	margin: 0;
 }
 
+.similar-projects__subtitle {
+	@include p2;
+	color: $color-disabled;
+	margin: 0;
+}
+
 .similar-projects__nav {
 	display: flex;
 	gap: 8px;
