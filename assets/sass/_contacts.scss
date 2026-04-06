@@ -1,0 +1,105 @@
+@use './roots/' as *;
+
+.contacts {
+	padding: 60px 0 80px;
+
+	@media (max-width: $bp-tablet) {
+		padding: 40px 0 60px;
+	}
+}
+
+.contacts__grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 16px;
+
+	@media (max-width: $bp-tablet) {
+		grid-template-columns: 1fr;
+	}
+}
+
+// ─── CARD ─────────────────────────────────────────────────────────
+
+.contacts__card {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding: 32px;
+	background-color: $color-silver;
+	border-top: 3px solid $color-secondary;
+	text-decoration: none;
+	transition: border-color 0.2s;
+    width: 100%;
+    transition: all .5s;
+
+	&:hover {
+		border-color: $color-primary;
+	}
+
+	@media (max-width: $bp-tablet) {
+		padding: 24px 20px;
+	}
+}
+
+.contacts__card--socials {
+	cursor: default;
+
+	&:hover {
+		border-color: $color-secondary;
+	}
+}
+
+.contacts__card-icon {
+	display: flex;
+	align-items: center;
+	color: $color-primary;
+	margin-bottom: 8px;
+}
+
+.contacts__card-label {
+	@include p3;
+	color: rgba($color-primary, 0.6);
+}
+
+.contacts__card-value {
+	@include p2-semi;
+	text-transform: uppercase;
+	color: $color-primary;
+	letter-spacing: 0.02em;
+}
+
+.contacts__card-title {
+	@include p2-semi;
+	text-transform: uppercase;
+	color: $color-primary;
+	letter-spacing: 0.05em;
+	margin: 0 0 16px;
+}
+
+// ─── SOCIALS ──────────────────────────────────────────────────────
+
+.contacts__socials {
+	display: flex;
+	align-items: center;
+}
+
+.contacts__social-link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	border: 1px solid rgba($color-primary, 0.25);
+	color: $color-primary;
+	text-decoration: none;
+	transition: border-color 0.2s, color 0.2s;
+
+	&:not(:first-child) {
+		border-left: none;
+	}
+
+	&:hover {
+		border-color: $color-secondary;
+		color: $color-secondary;
+	}
+}

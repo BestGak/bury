@@ -138,4 +138,4 @@ include BURY_REQUIRE_DIRECTORY . '/template-parts/content-variables.php';?>
 	<div class="header__overlay"></div>
 </div>
 </header>
-
+<main class="main">

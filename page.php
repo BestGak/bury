@@ -1,5 +1,4 @@
 <?php get_header(); ?>
-<main>
     <?php get_template_part( 'template-parts/content', 'breadcrumbs' ); ?>
     <article class="page-article">
         <div class="container">
@@ -16,5 +15,4 @@
 
         </div>
     </article>
-</main>
 <?php get_footer(); ?>

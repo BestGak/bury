@@ -150,9 +150,23 @@ h5 { @include h5; }
 	border: none;
 	cursor: pointer;
 	text-decoration: none;
+	transition: all .5s;
 
 	&--secondary { background-color: $color-secondary; }
 	&--third     { background-color: $color-third; }
+	&--silver     { background-color: $color-silver;color: $color-primary;
+	&:hover {
+		background: $color-primary;
+		color: $color-white;
+		& .btn__icon {
+			background: #fff;
+			& svg path {
+				stroke: $color-third;
+			}
+		}
+		
+	}
+	}
 	&--disabled  { background-color: $color-disabled; }
 
 	&--sm {
@@ -166,8 +180,14 @@ h5 { @include h5; }
 		width: 34px;
 		height: 34px;
 		background-color: rgba($color-white, 0.15);
-
+		transition: all .5s;
 		svg, img { width: 16px; height: 16px; }
+		.btn--silver & {
+			background: $color-primary;
+			& svg path {
+				stroke: $color-silver;
+			}
+		}
 	}
 }
 

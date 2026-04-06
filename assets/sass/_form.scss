@@ -1,0 +1,261 @@
+@use './roots/' as *;
+
+// ─── SECTION ─────────────────────────────────────────────────────
+
+.cform {
+
+	position: relative;
+    & .container-l {
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        padding: 40px;
+        @media  screen and (max-width: $bp-tablet) {
+            padding: 40px 20px;
+        }
+    }
+    & .wpcf7-spinner {
+        display: none;
+    }
+    & .wpcf7 form.sent .wpcf7-response-output ,
+    & .wpcf7 form .wpcf7-response-output {
+        display: none;
+    }
+    & .wpcf7-not-valid {
+        border-bottom: 1px solid red;
+    }
+    & .wpcf7-not-valid-tip {
+        display: none;
+    }
+}
+.cform__left {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    & .cform__contacts {
+        margin-top: auto;
+    }
+}
+
+.cform__inner {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	align-items: center;
+	gap: 60px;
+
+	@media (max-width: $bp-tablet) {
+		grid-template-columns: 1fr;
+		gap: 40px;
+		padding-top: 40px;
+		padding-bottom: 40px;
+	}
+}
+
+
+.cform__title {
+	@include h2;
+	color: $color-white;
+	text-transform: uppercase;
+	margin: 0 0 24px;
+}
+
+.cform__desc {
+	@include p2;
+	color: rgba($color-white, 0.8);
+	margin: 0 0 40px;
+}
+
+.cform__contacts {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.cform__contact-item {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	text-decoration: none;
+}
+
+.cform__contact-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border: 1px solid $color-secondary;
+    background-color: rgba($color-white, 1);
+	color: $color-secondary;
+	flex-shrink: 0;
+}
+
+.cform__contact-text {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+
+	strong {
+		@include p2-semi;
+		color: $color-white;
+	}
+
+	span {
+		@include p3;
+		color: rgba($color-white, 1);
+		text-decoration: underline;
+	}
+}
+
+// ─── RIGHT ────────────────────────────────────────────────────────
+
+.cform__form-wrap {
+	background-color: $color-white;
+	padding: 40px 48px;
+
+	@media (max-width: $bp-tablet) {
+		padding: 28px 24px;
+	}
+}
+
+// ─── FORM ─────────────────────────────────────────────────────────
+
+.cform__form {
+	display: flex;
+	flex-direction: column;
+}
+
+.cform__row {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0 32px;
+}
+
+.cform__field {
+	position: relative;
+	padding: 0;
+    & input , & textarea {
+        border: none;
+	    border-bottom: 1px solid rgba($color-primary, 0.2);
+    }
+	&--full {
+		margin-top: 4px;
+	}
+}
+
+// CF7 & native inputs
+.cform__input,
+.cform__textarea,
+.wpcf7 input[type="text"],
+.wpcf7 input[type="email"],
+.wpcf7 input[type="tel"],
+.wpcf7 textarea {
+	width: 100%;
+	background: transparent;
+	outline: none;
+	padding: 18px 0;
+	@include p2;
+	color: $color-primary;
+
+	&::placeholder {
+		color: rgba($color-primary, 0.45);
+	}
+}
+
+.cform__textarea,
+.wpcf7 textarea {
+	resize: none;
+	height: 130px;
+	display: block;
+}
+
+.cform__counter {
+	display: block;
+	@include p3;
+	color: rgba($color-primary, 0.4);
+	padding: 8px 0 16px;
+    margin-bottom: 24px;
+}
+
+.cform__bottom {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+    justify-content: flex-end;
+	@media (max-width: $bp-mobile) {
+		flex-direction: column;
+		align-items: stretch;
+	}
+}
+
+.cform__captcha {
+	flex: 1;
+	border: 1px solid rgba($color-primary, 0.15);
+	padding: 10px;
+	min-height: 78px;
+	display: flex;
+	align-items: center;
+}
+
+.cform__submit {
+	flex-shrink: 0;
+	white-space: nowrap;
+	align-self: stretch;
+
+	@media (max-width: $bp-mobile) {
+		width: 100%;
+		justify-content: center;
+	}
+}
+
+// ─── SUCCESS ─────────────────────────────────────────────────────
+
+.cform__success {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	padding: 40px 24px;
+	gap: 16px;
+
+	svg { color: $color-secondary; }
+}
+
+.cform__success-title {
+	@include h4;
+	color: $color-primary;
+	margin: 0;
+}
+
+.cform__success-text {
+	@include p2;
+	color: rgba($color-primary, 0.7);
+	margin: 0;
+}
+
+.cform__success-close {
+	margin-top: 8px;
+	width: 100%;
+	justify-content: center;
+}
+
+// CF7 reset
+.wpcf7-form-control-wrap {
+	display: block;
+}
+
+.wpcf7 .wpcf7-not-valid-tip {
+	@include p3;
+	color: #e53e3e;
+	margin-top: 4px;
+}
+
+.wpcf7 .wpcf7-response-output {
+	@include p3;
+	margin-top: 12px;
+	padding: 10px 16px;
+	border: 1px solid;
+}

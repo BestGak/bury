@@ -13,7 +13,8 @@
  */
 include BURY_REQUIRE_DIRECTORY . '/template-parts/content-variables.php';
 ?>
-
+<?= get_template_part('template-parts/section' , 'form') ?>
+</main>
 <footer class="footer">
 
 	<!-- LOGO -->

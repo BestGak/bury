@@ -45,6 +45,13 @@
         gap: 5px;
         align-items: center
     }
+    .breadcrumbs--has-thumb & a, span, 
+    .breadcrumbs--has-thumb & .breadcrumb_last {
+        color: $color-white
+    }
+    .breadcrumbs--has-thumb & svg path {
+        stroke: $color-white;
+    }
 	// Yoast & fallback общие стили
 	a, span, .breadcrumb_last {
 		@include p3;
@@ -74,7 +81,9 @@
 		}
 	}
 }
-
+ .breadcrumbs--has-thumb .breadcrumbs__title {
+    color: $color-white
+ }
 .breadcrumbs__title {
 	@include h1;
 	color: $color-primary;

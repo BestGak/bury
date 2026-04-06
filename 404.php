@@ -1,6 +1,5 @@
 <?php get_header(); ?>
 
-<main class="main">
 	<section class="error">
 		<div class="container error__inner">
 			<img src="<?php echo get_template_directory_uri(); ?>/assets/images/404.svg" alt="404" class="error__img">
@@ -12,6 +11,5 @@
 			</a>
 		</div>
 	</section>
-</main>
 
 <?php get_footer(); ?>
