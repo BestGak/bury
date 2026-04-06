@@ -135,9 +135,9 @@
 		&::before {
 			content: '';
 			display: inline-block;
-			width: 16px;
-			height: 20px;
-			background-image: url("data:image/svg+xml,%3Csvg width='16' height='20' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z' stroke='%2300C4BE' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='12' cy='10' r='3' stroke='%2300C4BE' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+			width: 13px;
+			height: 17px;
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='17' viewBox='0 0 13 17' fill='none'%3E%3Cpath d='M6.25 0C2.80562 0 0 2.80625 0 6.25C0 8.02063 0.88125 9.8475 2.02375 11.5562C3.16687 13.2656 4.59625 14.855 5.80813 16.0669C5.92533 16.184 6.08427 16.2499 6.25 16.2499C6.41573 16.2499 6.57467 16.184 6.69188 16.0669C7.93125 14.8275 9.36063 13.2375 10.4969 11.5344C11.6331 9.83187 12.5 8.01688 12.5 6.25C12.5 2.80625 9.69438 0 6.25 0ZM6.25 3.75C7.62313 3.75 8.75 4.87687 8.75 6.25C8.75 7.62313 7.62313 8.75 6.25 8.75C4.87687 8.75 3.75 7.62313 3.75 6.25C3.75 4.87687 4.87687 3.75 6.25 3.75Z' fill='white'/%3E%3C/svg%3E");
 			background-size: contain;
 			background-repeat: no-repeat;
 			flex-shrink: 0;
@@ -168,7 +168,6 @@ ul.footer__contacts {
 	justify-content: center;
 	width: 36px;
 	height: 36px;
-	border: 1px solid rgba($color-white, 0.25);
 	flex-shrink: 0;
 	color: $color-white;
 	margin-top: 2px;
@@ -216,7 +215,7 @@ ul.footer__contacts {
 	transition: border-color 0.2s, color 0.2s;
 
 	&:not(:first-child) {
-		border-left: none;
+		// border-left: none;
 	}
 
 	&:hover {
@@ -281,9 +280,10 @@ ul.footer__contacts {
 
 	span {
 		@include p3;
-		color: rgba($color-white, 0.5);
+		color: rgba($color-white, 1);
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
+
 	}
 }
 
@@ -291,12 +291,14 @@ ul.footer__contacts {
 	display: inline-flex;
 	align-items: center;
 	padding: 4px 12px;
-	border: 1px solid $color-white;
+	// border: 1px solid $color-white;
 	@include p3-bold;
 	color: $color-white;
 	text-decoration: none;
 	letter-spacing: 0.1em;
 	transition: border-color 0.2s, color 0.2s;
+	border-radius: 87.341px;
+	border: 0.437px solid #0CC658;
 
 	&:hover {
 		border-color: $color-secondary;

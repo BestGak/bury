@@ -17,7 +17,6 @@ include BURY_REQUIRE_DIRECTORY . '/template-parts/content-variables.php';
 </main>
 <footer class="footer">
 
-	<!-- LOGO -->
 	<div class="footer__logo-wrap">
 		<?php if ( $site_logo_footer ) : ?>
 			<a href="<?php echo home_url('/'); ?>" class="footer__logo">
@@ -65,14 +64,22 @@ include BURY_REQUIRE_DIRECTORY . '/template-parts/content-variables.php';
 					</ul>
 				</div>
 
-				<!-- CONTACT US -->
 				<div class="footer__col">
 					<p class="footer__col-title"><?= __('Contact Us', 'bury') ?></p>
 					<ul class="footer__contacts">
 						<?php if ( $contact_phone ) : ?>
 						<li class="footer__contact-item">
 							<span class="footer__contact-icon">
-								<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+									<g clip-path="url(#clip0_2023_1293)">
+										<path d="M5.0048 7.72878L5.0057 7.72969C5.02986 7.22173 5.18482 6.82408 5.47986 6.39375L5.61508 6.20625L5.61597 6.20535C5.84456 5.9046 6.19476 5.57529 6.53004 5.30571C6.85625 5.04342 7.24887 4.77339 7.57751 4.64586C8.1886 4.4092 8.85017 4.44312 9.38311 4.87662L9.38941 4.88203C9.48287 4.95989 9.60492 5.09736 9.70221 5.20926C9.81639 5.34057 9.95358 5.50451 10.0934 5.6762C10.3701 6.01589 10.6778 6.40986 10.8615 6.6723L10.8624 6.6741C11.1276 7.05533 11.4985 7.65112 11.6521 7.94783L11.6538 7.95144C11.9052 8.44462 11.964 8.97939 11.7845 9.50732C11.7213 9.69222 11.6405 9.87185 11.469 10.0653C11.3317 10.2203 11.1431 10.3742 10.9137 10.5566L10.5902 10.8208C10.5661 10.8405 10.5453 10.8587 10.527 10.8739L10.5126 10.9027C10.5206 10.8857 10.4971 10.9093 10.5244 11.0434C10.5537 11.188 10.6317 11.4044 10.7939 11.7303V11.7321C11.0266 12.2022 11.3243 12.6273 11.7864 13.1321L11.7872 13.1338C12.1742 13.5583 12.6731 13.9784 13.033 14.1976L13.0339 14.1984C13.266 14.3401 13.5401 14.4683 13.7966 14.5599C14.0622 14.6549 14.2516 14.6898 14.3356 14.6915C14.3356 14.6915 14.3454 14.691 14.3644 14.6879C14.3841 14.6848 14.4072 14.6792 14.4303 14.6726C14.4421 14.6692 14.4527 14.6659 14.4618 14.6627C14.476 14.6475 14.4933 14.6291 14.5132 14.6068C14.58 14.5317 14.6644 14.4315 14.7494 14.3264L15.0577 13.9568C15.153 13.8489 15.2428 13.756 15.3308 13.6783C15.5376 13.4956 15.7328 13.3973 15.9582 13.333L16.0564 13.3087C16.5508 13.2044 17.0624 13.3905 17.5123 13.6215L17.5132 13.6206C17.9726 13.8561 18.6147 14.3046 19.162 14.733C19.4406 14.9512 19.7082 15.1745 19.9291 15.3766C20.134 15.5641 20.3474 15.7775 20.4736 15.9679L20.4781 15.9751C20.5468 16.0818 20.6424 16.2602 20.6935 16.4096L20.6917 16.4106C20.7449 16.5619 20.7764 16.7269 20.79 16.8721C20.8032 17.0141 20.8059 17.1963 20.7692 17.3688C20.7232 17.5873 20.6278 17.7896 20.5042 17.9962C20.381 18.2022 20.2082 18.4482 19.9787 18.757L19.9778 18.7589C19.8176 18.9731 19.6046 19.2143 19.408 19.416C19.231 19.5976 19.0006 19.8171 18.8131 19.9289L18.8077 19.9326C18.4756 20.1264 18.1277 20.2344 17.7025 20.2165C17.3168 20.2002 16.903 20.0802 16.4315 19.9091C14.7839 19.3104 13.2035 18.4376 11.6881 17.2994C8.77905 15.1149 6.6593 12.3582 5.24368 8.9205L5.12469 8.6122C5.09021 8.51287 5.06144 8.41584 5.04086 8.31742C4.99659 8.10548 4.99523 7.92054 5.0048 7.72878Z" fill="white"/>
+									</g>
+									<defs>
+										<clipPath id="clip0_2023_1293">
+										<rect width="24" height="24" fill="white"/>
+										</clipPath>
+									</defs>
+								</svg>
 							</span>
 							<span class="footer__contact-text">
 								<span class="footer__contact-label"><?= __('phone', 'bury') ?></span>
@@ -83,7 +90,12 @@ include BURY_REQUIRE_DIRECTORY . '/template-parts/content-variables.php';
 						<?php if ( $contact_email ) : ?>
 						<li class="footer__contact-item">
 							<span class="footer__contact-icon">
-								<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+									<path d="M22.8244 5.50391L16.7588 11.5304L22.8244 17.5569C22.934 17.3277 23.0006 17.0744 23.0006 16.8038V6.25699C23.0006 5.98641 22.934 5.73309 22.8244 5.50391Z" fill="white"/>
+									<path d="M21.2423 4.5H4.75796C4.48738 4.5 4.23406 4.56652 4.00488 4.67617L11.7573 12.3896C12.4428 13.0751 13.5575 13.0751 14.2429 12.3896L21.9954 4.67617C21.7662 4.56652 21.5129 4.5 21.2423 4.5Z" fill="white"/>
+									<path d="M3.17617 5.50391C3.06652 5.73309 3 5.98641 3 6.25699V16.8038C3 17.0744 3.06652 17.3278 3.17617 17.5569L9.24176 11.5304L3.17617 5.50391Z" fill="white"/>
+									<path d="M15.9298 12.3594L15.0715 13.2177C13.9293 14.3599 12.0709 14.3599 10.9288 13.2177L10.0705 12.3594L4.00488 18.3859C4.23406 18.4956 4.48738 18.5621 4.75796 18.5621H21.2423C21.5129 18.5621 21.7662 18.4956 21.9954 18.3859L15.9298 12.3594Z" fill="white"/>
+								</svg>
 							</span>
 							<span class="footer__contact-text">
 								<span class="footer__contact-label"><?= __('email', 'bury') ?></span>
@@ -94,7 +106,9 @@ include BURY_REQUIRE_DIRECTORY . '/template-parts/content-variables.php';
 						<?php if ( $contact_address ) : ?>
 						<li class="footer__contact-item">
 							<span class="footer__contact-icon">
-								<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+								<svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" viewBox="0 0 15 20" fill="none">
+									<path d="M7.5 0C3.36675 0 0 3.3675 0 7.5C0 9.62475 1.0575 11.817 2.4285 13.8675C3.80025 15.9187 5.5155 17.826 6.96975 19.2803C7.1104 19.4209 7.30113 19.4998 7.5 19.4998C7.69887 19.4998 7.8896 19.4209 8.03025 19.2803C9.5175 17.793 11.2327 15.885 12.5963 13.8412C13.9598 11.7983 15 9.62025 15 7.5C15 3.3675 11.6333 0 7.5 0ZM7.5 4.5C9.14775 4.5 10.5 5.85225 10.5 7.5C10.5 9.14775 9.14775 10.5 7.5 10.5C5.85225 10.5 4.5 9.14775 4.5 7.5C4.5 5.85225 5.85225 4.5 7.5 4.5Z" fill="white"/>
+								</svg>
 							</span>
 							<span class="footer__contact-text">
 								<span class="footer__contact-label"><?= __('address', 'bury') ?></span>
