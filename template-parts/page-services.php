@@ -19,7 +19,7 @@ $services_query = new WP_Query( [
     <?php get_template_part( 'template-parts/content', 'breadcrumbs', array( 'without_bg' => false ) ); ?>
 
     <?php if ( $services_query->have_posts() ) : ?>
-    <section class="services mb-m">
+    <section class="reviews mb-m">
         <div class="container">
 
             <div class="services__head">

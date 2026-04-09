@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	initFormSuccess();
 	initProjectsAjax();
 	initSimilarProjectsSwiper();
+	initSimilarServicesSwiper();
+	initServiceIncludedSwiper();
 	initFaqAccordion();
 });
 
@@ -34,25 +36,28 @@ function initBurgerMenu() {
 }
 
 function initFormCounter() {
-	const textarea = document.querySelector('.cform__field--full textarea');
-	const counter  = document.querySelector('.cform__counter');
+	document.querySelectorAll('.cform__field--full').forEach(function (wrap) {
+		const textarea = wrap.querySelector('textarea');
+		const counter  = wrap.querySelector('.cform__counter');
 
-	if (!textarea || !counter) return;
+		if (!textarea || !counter) return;
 
-	const max = textarea.getAttribute('maxlength') || 500;
+		const max = textarea.getAttribute('maxlength') || 500;
 
-	textarea.addEventListener('input', function () {
-		counter.textContent = this.value.length + ' / ' + max + ' characters max.';
+		textarea.addEventListener('input', function () {
+			counter.textContent = this.value.length + ' / ' + max + ' characters max.';
+		});
 	});
 }
 
 function initFormSuccess() {
-	const formWrap = document.querySelector('.cform__form-wrap');
+	document.addEventListener('wpcf7mailsent', function (e) {
+		const wpcf7El  = document.getElementById( e.detail.unitTag );
+		const formWrap = wpcf7El ? wpcf7El.closest('.cform__form-wrap') : null;
 
-	if (!formWrap) return;
+		if (!formWrap) return;
 
-	document.addEventListener('wpcf7mailsent', function () {
-		const originalHTML = formWrap.innerHTML;
+		const originalHTML  = formWrap.innerHTML;
 		const currentHeight = formWrap.offsetHeight;
 
 		formWrap.style.minHeight = currentHeight + 'px';
@@ -159,6 +164,67 @@ function initFaqAccordion() {
 				trigger.setAttribute('aria-expanded', 'true');
 			}
 		});
+	});
+}
+
+function initServiceIncludedSwiper() {
+	const el = document.querySelector('.service-included__swiper');
+	if (!el) return;
+
+	new Swiper(el, {
+		slidesPerView: 3,
+		spaceBetween: 20,
+		watchSlidesProgress: true,
+		pagination: {
+			el: '.service-included__dots',
+			clickable: true,
+		},
+		navigation: {
+			prevEl: '.service-included__btn--prev',
+			nextEl: '.service-included__btn--next',
+		},
+		breakpoints: {
+			0: {
+				slidesPerView: 1,
+				spaceBetween: 16,
+			},
+			768: {
+				slidesPerView: 2,
+				spaceBetween: 20,
+			},
+			1024: {
+				slidesPerView: 3,
+				spaceBetween: 20,
+			},
+		},
+	});
+}
+
+function initSimilarServicesSwiper() {
+	const el = document.querySelector('.similar-services__swiper');
+	if (!el) return;
+
+	new Swiper(el, {
+		slidesPerView: 2,
+		spaceBetween: 20,
+		pagination: {
+			el: '.similar-services__dots',
+			clickable: true,
+		},
+		navigation: {
+			prevEl: '.similar-services__btn--prev',
+			nextEl: '.similar-services__btn--next',
+		},
+		breakpoints: {
+			0: {
+				slidesPerView: 1,
+				spaceBetween: 16,
+			},
+			768: {
+				slidesPerView: 2,
+				spaceBetween: 20,
+			},
+		},
 	});
 }
 
