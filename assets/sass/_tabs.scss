@@ -1,0 +1,166 @@
+@use './roots/' as *;
+
+// ─── Project Tabs ─────────────────────────────────────────────────────────────
+
+.project-tabs {
+	padding: 80px 0;
+
+	@media (max-width: $bp-tablet) {
+		padding: 50px 0;
+	}
+}
+
+.project-tabs__head {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 12px;
+	padding: 48px 0;
+	text-align: center;
+    background: $color-primary;
+    @media screen and (max-width: $bp-tablet) {
+        padding: 32px 0;
+    }
+	img {
+		width: 40px;
+		height: auto;
+	}
+}
+
+.project-tabs__title {
+	@include h2;
+	color: $color-white;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+// ─── Body (bg image) ──────────────────────────────────────────────────────────
+
+.project-tabs__body {
+	display: grid;
+	grid-template-columns: 0.8fr 1.2fr;
+	align-items: start;
+    gap: 24px;
+    padding: 80px 40px;
+	@media (max-width: $bp-table-full) {
+		grid-template-columns: 260px 1fr;
+	}
+
+	@media (max-width: $bp-tablet) {
+		grid-template-columns: 1fr;
+        padding: 48px 20px;
+	}
+}
+
+// ─── Nav (tabs list) ──────────────────────────────────────────────────────────
+
+.project-tabs__nav {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.project-tabs__tab {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 16px 20px;
+	background: rgba($color-silver, 1);
+	border: none;
+	cursor: pointer;
+	text-align: left;
+	transition: background 0.2s;
+	width: 100%;
+
+    &.is-active {
+        span:last-child { 
+            color: $color-primary;
+        }
+    }
+	span:last-child {
+		@include p2-semi;
+        color: #707B8E;
+
+	}
+
+	&:hover {
+		background: $color-secondary;
+        span:last-child { 
+            color: $color-primary;
+        }
+	}
+
+	&.is-active {
+		background: $color-secondary;
+	}
+}
+
+.project-tabs__tab-num {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 30px;
+	height: 30px;
+	flex-shrink: 0;
+    background: #707B8E;
+	@include p3-bold;
+	color: $color-white;
+
+	.project-tabs__tab.is-active & {
+		background: #254054;
+	}
+}
+
+// ─── Panels ───────────────────────────────────────────────────────────────────
+@keyframes tabFadeIn {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+
+.project-tabs__panel {
+	display: none;
+	flex-direction: column;
+	border: 1.5px solid $color-white;
+
+	&.is-active {
+		display: flex;
+		animation: tabFadeIn 0.35s ease;
+	}
+}
+
+.project-tabs__panel-img {
+	overflow: hidden;
+	aspect-ratio: 16 / 9;
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+}
+
+.project-tabs__panel-content {
+	background: $color-white;
+	padding: 28px 32px;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+
+	@media (max-width: $bp-tablet) {
+		padding: 20px;
+	}
+
+	h3 {
+		@include h4;
+		color: $color-primary;
+		text-transform: uppercase;
+		margin: 0;
+	}
+
+	p {
+		@include p3;
+		color: $color-primary;
+		margin: 0;
+	}
+}

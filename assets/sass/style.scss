@@ -1,4 +1,5 @@
 @use './roots';
+@use './hero';
 @use './header';
 @use './faq';
 @use './footer';
@@ -8,6 +9,7 @@
 @use './contacts';
 @use './form';
 @use './projects';
+@use './tabs';
 @use './services';
 @use './reviews';
 @use './gallery';
