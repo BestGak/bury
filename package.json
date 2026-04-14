@@ -11,7 +11,7 @@
     "license": "ISC",
     "scripts": {
         "start": "gulp",
-        "bundle": "dir-archiver --src . --dest ../retirement.zip --exclude .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map yarn.lock"
+        "bundle": "dir-archiver --src . --dest ../aomine_daiki.zip --exclude .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map yarn.lock"
     },
     "devDependencies": {
         "@babel/core": "^7.15.8",

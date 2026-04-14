@@ -154,8 +154,15 @@ function initProjectsAjax() {
 
 function initProjectTabs() {
 	const tabs = document.querySelectorAll('.project-tabs__tab');
+	const body = document.querySelector('.project-tabs__body');
 
 	if (!tabs.length) return;
+
+	function setTabBg(bgUrl) {
+		if (!body || !bgUrl) return;
+		body.style.backgroundImage =
+			'linear-gradient(0deg, rgba(16,35,49,0.40) 0%, rgba(16,35,49,0.40) 100%), url("' + bgUrl + '")';
+	}
 
 	tabs.forEach(function (tab) {
 		tab.addEventListener('click', function () {
@@ -168,10 +175,10 @@ function initProjectTabs() {
 			tabs.forEach(function (t) { t.classList.remove('is-active'); });
 			tab.classList.add('is-active');
 
-			if (activePanel) {
-				activePanel.classList.remove('is-active');
-			}
+			if (activePanel) activePanel.classList.remove('is-active');
 			nextPanel.classList.add('is-active');
+
+			setTabBg(tab.dataset.bg);
 		});
 	});
 }

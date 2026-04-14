@@ -13,6 +13,9 @@
 		'orderby'        => 'date',
 		'order'          => 'DESC',
 	] );
+	$hero_title = get_field('hero_title') ?? 'Professional Tape & Jointing & Drylining Contractors in Manchester';
+	$hero_signature = get_field('hero_signature');
+	$hero_image = get_field('hero_image');
 	$faq_title = get_field( 'faq_title' );
 	$faq_items = get_field( 'faq' );
 ?>
@@ -21,17 +24,17 @@ include BURY_REQUIRE_DIRECTORY . '/template-parts/content-variables.php';
 get_header();
 ?>
 
-<section class="hero" style="background: linear-gradient(0deg, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.60) 100%), url('<?php echo get_stylesheet_directory_uri(); ?>/assets/images/hero.jpg') lightgray 50% / cover no-repeat;">
+<section class="hero" style="background: linear-gradient(0deg, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.60) 100%), url('<?= $hero_image ?>') lightgray 50% / cover no-repeat;">
     <div class="container hero__inner">
 
         <div class="hero__content">
-            <h1 class="hero__title"><?php esc_html_e( 'Professional Tape & Jointing & Drylining Contractors in Manchester', 'bury' ); ?></h1>
+            <h1 class="hero__title"><?= $hero_title ?></h1>
 
             <div class="hero__desc-wrap">
                 <div class="hero__man">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/hero-man.png" alt="" aria-hidden="true">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/hero-man.png" alt="Hero" aria-hidden="true">
                 </div>
-                <p class="hero__desc"><?php esc_html_e( 'DryLining Bury Limited is a trusted drylining and interior finishing contractor based in Bury, Greater Manchester. We specialise in tape and jointing, spray plastering, painting, drylining and suspended ceilings for residential and commercial projects.', 'bury' ); ?></p>
+                <p class="hero__desc"><?= $hero_signature ?></p>
             </div>
 
             <div class="hero__actions">
@@ -76,33 +79,7 @@ get_header();
 <?= the_content(); ?>
 
 
-
-    <section class="certification">
-        <div class="container">
-
-            <div class="certification__left">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/quote.svg" alt="" aria-hidden="true">
-                <h2 class="certification__title"><?php esc_html_e( 'Our Certification', 'bury' ); ?></h2>
-                <p class="certification__subtitle"><?php esc_html_e( 'All works carried out safely and in full compliance with UK regulations.', 'bury' ); ?></p>
-            </div>
-
-            <div class="certification__logos">
-                <div class="certification__logo">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/partner1.png" alt="Checkatrade" loading="lazy">
-                </div>
-                <div class="certification__logo">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/partner2.png" alt="CSCS" loading="lazy">
-                </div>
-                <div class="certification__logo">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/partner3.png" alt="IPAF" loading="lazy">
-                </div>
-                <div class="certification__logo">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/partner4.png" alt="PASMA" loading="lazy">
-                </div>
-            </div>
-
-        </div>
-    </section>
+    <?php get_template_part( 'template-parts/section', 'certification' ); ?>
 
 	<?php if ( $services_query->have_posts() ) : ?>
     <section class="services mb-m">
@@ -235,67 +212,75 @@ get_header();
         </div>
     </section>
 
+	<?php
+	$tabs_title = get_field('tabs_title') ?: __( 'Commercial & Residential Projects', 'bury' );
+	$project_tabs = get_field('project_tabs');
+
+	$default_bg = get_stylesheet_directory_uri() . '/assets/images/house.png';
+	if ( $project_tabs ) {
+		$first_bg = $project_tabs[0]['tab_bg'];
+		$first_bg_url = is_array( $first_bg ) ? $first_bg['url'] : $first_bg;
+		if ( $first_bg_url ) $default_bg = $first_bg_url;
+	}
+	?>
 	<section class="project-tabs mb-m">
 		<div class="container-l">
 
 			<div class="project-tabs__head">
 				<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/quote.svg" alt="" aria-hidden="true">
-				<h2 class="project-tabs__title"><?php esc_html_e( 'Commercial & Residential Projects', 'bury' ); ?></h2>
+				<h2 class="project-tabs__title"><?php echo esc_html( $tabs_title ); ?></h2>
 			</div>
 
-			<div class="project-tabs__body" style="background-image: linear-gradient(0deg, rgba(16,35,49,0.40) 0%, rgba(16,35,49,0.40) 100%), url('<?php echo get_stylesheet_directory_uri(); ?>/assets/images/house.png'); background-position: center center; background-size: cover; background-repeat: no-repeat;">
+			<div class="project-tabs__body" style="background-image: linear-gradient(0deg, rgba(16,35,49,0.40) 0%, rgba(16,35,49,0.40) 100%), url('<?php echo esc_url( $default_bg ); ?>'); background-position: center center; background-size: cover; background-repeat: no-repeat;">
 
 				<div class="project-tabs__nav">
-					<button class="project-tabs__tab is-active" data-tab="1">
+					<?php if ( $project_tabs ) :
+						foreach ( $project_tabs as $i => $tab ) :
+							$tab_bg     = $tab['tab_bg'];
+							$tab_bg_url = is_array( $tab_bg ) ? $tab_bg['url'] : $tab_bg;
+							$tab_num    = str_pad( $i + 1, 2, '0', STR_PAD_LEFT );
+					?>
+					<button class="project-tabs__tab <?php echo $i === 0 ? 'is-active' : ''; ?>"
+					        data-tab="<?php echo $i + 1; ?>"
+					        data-bg="<?php echo esc_url( $tab_bg_url ); ?>">
+						<span class="project-tabs__tab-num"><?php echo esc_html( $tab_num ); ?></span>
+						<span><?php echo esc_html( $tab['tab_title'] ); ?></span>
+					</button>
+					<?php endforeach; else : ?>
+					<button class="project-tabs__tab is-active" data-tab="1" data-bg="<?php echo esc_url( $default_bg ); ?>">
 						<span class="project-tabs__tab-num">01</span>
 						<span><?php esc_html_e( 'Commercial Projects', 'bury' ); ?></span>
 					</button>
-					<button class="project-tabs__tab" data-tab="2">
+					<button class="project-tabs__tab" data-tab="2" data-bg="<?php echo esc_url( $default_bg ); ?>">
 						<span class="project-tabs__tab-num">02</span>
 						<span><?php esc_html_e( 'Residential Projects', 'bury' ); ?></span>
 					</button>
-					<button class="project-tabs__tab" data-tab="3">
+					<button class="project-tabs__tab" data-tab="3" data-bg="<?php echo esc_url( $default_bg ); ?>">
 						<span class="project-tabs__tab-num">03</span>
 						<span><?php esc_html_e( 'Private / Domestic Projects', 'bury' ); ?></span>
 					</button>
+					<?php endif; ?>
 				</div>
 
 				<div class="project-tabs__panels">
-
-					<div class="project-tabs__panel is-active" data-panel="1">
+					<?php if ( $project_tabs ) :
+						foreach ( $project_tabs as $i => $tab ) :
+							$panel_img     = $tab['tab_image'];
+							$panel_img_url = is_array( $panel_img ) ? $panel_img['url'] : $panel_img;
+							$panel_img_alt = is_array( $panel_img ) ? ( $panel_img['alt'] ?? '' ) : '';
+					?>
+					<div class="project-tabs__panel <?php echo $i === 0 ? 'is-active' : ''; ?>" data-panel="<?php echo $i + 1; ?>">
 						<div class="project-tabs__panel-img">
-							<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/house.png" alt="Commercial Projects" loading="lazy">
+							<img src="<?php echo esc_url( $panel_img_url ); ?>" alt="<?php echo esc_attr( $panel_img_alt ); ?>" loading="lazy">
 						</div>
 						<div class="project-tabs__panel-content">
-							<h3><?php esc_html_e( 'Commercial Projects', 'bury' ); ?></h3>
-							<p><?php esc_html_e( 'We deliver professional drylining and interior finishing services for a wide range of commercial projects across Manchester and Greater Manchester. Our team works closely with developers, main contractors and project managers, supporting projects from early stages through to final handover.', 'bury' ); ?></p>
-							<p><?php esc_html_e( 'Our commercial experience includes office fit-outs, apartment blocks, retail spaces and new-build developments, where quality, programme and compliance are critical. We understand the demands of live sites, tight deadlines and high finishing standards, ensuring reliable delivery on every project.', 'bury' ); ?></p>
-							<p><?php esc_html_e( 'With a focus on efficient workflow, skilled labour and safety-first practices, we provide consistent results that meet modern UK construction requirements.', 'bury' ); ?></p>
+							<h3><?php echo esc_html( $tab['tab_content_title'] ); ?></h3>
+							<?php echo wp_kses_post( $tab['tab_content'] ); ?>
 						</div>
 					</div>
+					<?php endforeach; ?>
 
-					<div class="project-tabs__panel" data-panel="2">
-						<div class="project-tabs__panel-img">
-							<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/house.png" alt="Residential Projects" loading="lazy">
-						</div>
-						<div class="project-tabs__panel-content">
-							<h3><?php esc_html_e( 'Residential Projects', 'bury' ); ?></h3>
-							<p><?php esc_html_e( 'We support residential developers and housing associations across Greater Manchester with reliable drylining and interior finishing services. Our team is experienced in working within occupied and part-occupied developments, maintaining high standards while minimising disruption.', 'bury' ); ?></p>
-							<p><?php esc_html_e( 'From new housing estates to apartment complexes and refurbishment schemes, we provide consistent finishing quality and work to programme across all residential project types.', 'bury' ); ?></p>
-						</div>
-					</div>
-
-					<div class="project-tabs__panel" data-panel="3">
-						<div class="project-tabs__panel-img">
-							<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/house.png" alt="Private / Domestic Projects" loading="lazy">
-						</div>
-						<div class="project-tabs__panel-content">
-							<h3><?php esc_html_e( 'Private / Domestic Projects', 'bury' ); ?></h3>
-							<p><?php esc_html_e( 'For homeowners and private clients across Manchester and Greater Manchester, we offer professional drylining and interior finishing tailored to domestic settings. Whether it\'s a single room, full home renovation or extension, our team delivers clean, precise results with minimal disruption.', 'bury' ); ?></p>
-							<p><?php esc_html_e( 'We take pride in our attention to detail and clear communication throughout every private project, ensuring the finished result meets your expectations and is ready for decoration.', 'bury' ); ?></p>
-						</div>
-					</div>
-
+					<?php endif; ?>
 				</div>
 			</div>
 

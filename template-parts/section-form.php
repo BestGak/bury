@@ -1,11 +1,12 @@
 <?php 
     include BURY_REQUIRE_DIRECTORY . '/template-parts/content-variables.php';
+    $form_content = get_field('form_content' , 'option');
+    $form_image = get_field('form_image' , 'option');
 ?>
 <section class="cform" id="cform">
-    <div class="container-l cform__inner" style="background: linear-gradient(90deg, #102331 0%, rgba(16, 35, 49, 0.60) 49.42%, rgba(16, 35, 49, 0.00) 100%), url('<?php echo get_template_directory_uri(); ?>/assets/images/form.webp') center / cover no-repeat;">
+    <div class="container-l cform__inner" style="background: linear-gradient(90deg, #102331 0%, rgba(16, 35, 49, 0.60) 49.42%, rgba(16, 35, 49, 0.00) 100%), url('<?= $form_image ?>') center / cover no-repeat;">
         <div class="cform__left">
-            <h2 class="cform__title"><?= __('Ready to start your project?', 'bury') ?></h2>
-            <p class="cform__desc"><?= __("Whether it's a commercial or private project, DryLining Bury Limited delivers reliable, high-quality drylining and interior finishing across Manchester and Greater Manchester.", 'bury') ?></p>
+            <?= $form_content ?>
             <div class="cform__contacts">
                 <?php if ( $contact_phone ) : ?>
                 <a href="tel:<?php echo esc_attr( preg_replace('/\s+/', '', $contact_phone) ); ?>" class="cform__contact-item">

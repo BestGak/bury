@@ -767,6 +767,9 @@ a.service-card__btn {
 		background-position: left center, -224px 0;
 		background-size: auto, 220.67% 100%;
 	}
+	& .cform__contact-text {
+		align-items: flex-start
+	}
 }
 
 .service-cta__title {
@@ -801,6 +804,20 @@ a.service-card__btn {
 	align-items: center;
 	gap: 12px;
 	text-decoration: none;
+	& strong , & span {
+		transition: all .5s;
+	}
+	&:hover  {
+		& .cform__contact-icon {
+			background: $color-secondary;
+		}
+		& .cform__contact-icon svg path {
+			fill: $color-white;
+		}
+		& strong , & span {
+			color: #CAFFFD;
+		}
+	}
 }
 
 .service-cta__phone-icon {

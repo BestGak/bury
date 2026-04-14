@@ -6,6 +6,9 @@
  * Version: 1.0
  */
 include BURY_REQUIRE_DIRECTORY . '/template-parts/content-variables.php';
+
+$history_title  = get_field( 'history_title' )  ?: __( 'History of Our Company', 'bury' );
+$history_slides = get_field( 'history_slides' );
 ?>
 <?php get_header(); ?>
     <?php get_template_part( 'template-parts/content', 'breadcrumbs', array( 'without_bg' => false ) ); ?>
@@ -119,7 +122,7 @@ include BURY_REQUIRE_DIRECTORY . '/template-parts/content-variables.php';
             <div class="company-history__head">
                 <div class="company-history__title-wrap">
                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/quote.svg" alt="" aria-hidden="true">
-                    <h2 class="company-history__title"><?= __('History of Our Company', 'bury') ?></h2>
+                    <h2 class="company-history__title"><?php echo esc_html( $history_title ); ?></h2>
                 </div>
                 <div class="company-history__nav">
                     <button class="company-history__btn company-history__btn--prev" aria-label="Previous">
@@ -138,53 +141,23 @@ include BURY_REQUIRE_DIRECTORY . '/template-parts/content-variables.php';
             <div class="company-history__swiper swiper">
                 <div class="swiper-wrapper">
 
+                    <?php if ( $history_slides ) :
+                        foreach ( $history_slides as $slide ) :
+                            $slide_img     = $slide['slide_image'];
+                            $slide_img_url = is_array( $slide_img ) ? $slide_img['url'] : $slide_img;
+                            $slide_img_alt = is_array( $slide_img ) ? ( $slide_img['alt'] ?? '' ) : '';
+                    ?>
                     <div class="swiper-slide">
                         <div class="company-history__slide">
                             <div class="company-history__img-wrap">
-                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/house-image.png" alt="2021">
+                                <img src="<?php echo esc_url( $slide_img_url ); ?>" alt="<?php echo esc_attr( $slide_img_alt ); ?>" loading="lazy">
                             </div>
                             <div class="company-history__content">
-                                <h3 class="company-history__year"><?= __('2021 — A New Beginning', 'bury') ?></h3>
-                                <p class="company-history__text"><?= __('Founded during a time of uncertainty, DRYLINING BURY Limited started small — providing drylining and interior finishing services for residential projects. Our commitment to quality workmanship and reliable service quickly helped us build strong relationships with clients and contractors across Manchester.', 'bury') ?></p>
+                                <div class="company-history__text"><?php echo wp_kses_post( $slide['slide_content'] ); ?></div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="swiper-slide">
-                        <div class="company-history__slide">
-                            <div class="company-history__img-wrap">
-                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/house-image.png" alt="2022">
-                            </div>
-                            <div class="company-history__content">
-                                <h3 class="company-history__year"><?= __('2022 — Growing Our Team', 'bury') ?></h3>
-                                <p class="company-history__text"><?= __('As demand grew, we expanded our skilled workforce and took on larger commercial projects. From office fit-outs to new-build housing developments, we proved that our standards of precision and professionalism scale with every job we undertake.', 'bury') ?></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="company-history__slide">
-                            <div class="company-history__img-wrap">
-                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/house-image.png" alt="2023">
-                            </div>
-                            <div class="company-history__content">
-                                <h3 class="company-history__year"><?= __('2023 — Expanding Our Reach', 'bury') ?></h3>
-                                <p class="company-history__text"><?= __('2023 marked our entry into Greater Manchester\'s commercial construction sector. We partnered with leading contractors and developers, delivering drylining solutions for schools, retail units, and multi-storey residential buildings — always on time and to specification.', 'bury') ?></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="company-history__slide">
-                            <div class="company-history__img-wrap">
-                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/house-image.png" alt="2024">
-                            </div>
-                            <div class="company-history__content">
-                                <h3 class="company-history__year"><?= __('2024 — New Heights', 'bury') ?></h3>
-                                <p class="company-history__text"><?= __('Today, DryLining Bury Limited is one of Greater Manchester\'s most trusted drylining contractors. With a growing portfolio of successful projects and a team of highly skilled professionals, we continue to raise the bar for quality, safety, and client satisfaction across every project we deliver.', 'bury') ?></p>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endforeach; endif; ?>
 
                 </div>
             </div>

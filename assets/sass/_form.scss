@@ -32,6 +32,20 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+	& > * {
+		color: #fff;
+	}
+	& p {
+		@include p2;
+		color: rgba($color-white, 1);
+		margin: 0 0 40px;
+	}
+	& h2 , & h3 {
+		@include h2;
+		color: $color-white;
+		text-transform: uppercase;
+		margin: 0 0 24px;
+	}
     & .cform__contacts {
         margin-top: auto;
     }
@@ -54,7 +68,7 @@
 }
 
 
-.cform__title {
+.cform__title  {
 	@include h2;
 	color: $color-white;
 	text-transform: uppercase;
