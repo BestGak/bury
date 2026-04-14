@@ -77,16 +77,11 @@
 
 .service-hero__excerpt {
 	@include p2;
-	color: rgba($color-white, 0.8);
+	color: $color-white;
 	margin: 0;
 	max-width: 560px;
 }
 
-.service-hero__right {
-	@media (max-width: $bp-tablet) {
-		margin: 0 -20px;
-	}
-}
 
 .service-hero__form {
 	// background: $color-white;
@@ -113,7 +108,7 @@
 
 .service-hero__form-desc {
 	@include p3;
-	color: $color-disabled;
+	color: $color-third;
 	margin: 0 0 8px;
 }
 
@@ -125,6 +120,17 @@
 
 	@media (max-width: $bp-tablet) {
 		padding: 50px 0;
+	}
+	&__wrapper {
+		display: flex;
+		align-items: center;
+		gap: 32px;
+		@media screen and (max-width: $bp-tablet) {
+			flex-direction: column;
+			gap: 16px;
+			align-items: flex-start;
+		}
+
 	}
 }
 
@@ -150,7 +156,7 @@
 
 	p {
 		@include p2;
-		color: $color-disabled;
+		color: $color-primary;
 		margin: 0;
 	}
 }
@@ -230,7 +236,7 @@
 
 	h4 + p {
 		@include p3;
-		color: $color-disabled;
+		color: $color-primary;
 		margin: 0;
 	}
 
@@ -366,8 +372,9 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: 44px;
-	height: 44px;
+	padding: 0;
+	width: 42px;
+	height: 54px;
 	background: $color-third;
 	border: none;
 	cursor: pointer;
@@ -505,7 +512,7 @@
 
 .services__subtitle {
 	@include p1;
-	color: rgba($color-white, 0.7);
+	color: $color-white;
 	margin: 0;
 }
 
@@ -595,7 +602,7 @@
 
 .service-card__excerpt {
 	@include p3;
-	color: rgba($color-white, 0.65);
+	color: $color-white;
 	margin: 0;
 	flex: 1;
 }
@@ -693,7 +700,7 @@ a.service-card__btn {
 
 .certification__subtitle {
 	@include p2;
-	color: rgba($color-white, 0.7);
+	color: $color-white;
 	margin: 0;
 }
 
@@ -771,7 +778,7 @@ a.service-card__btn {
 
 .service-cta__text {
 	@include p2;
-	color: rgba($color-white, 0.8);
+	color: $color-white;
 	max-width: 720px;
 	margin: 0 auto 40px;
 
@@ -864,7 +871,7 @@ a.service-card__btn {
 
 .similar-services__subtitle {
 	@include p2;
-	color: $color-disabled;
+	color: $color-primary;
 	margin: 0;
 }
 
@@ -882,8 +889,9 @@ a.service-card__btn {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: 44px;
-	height: 44px;
+	padding: 0;
+	width: 42px;
+	height: 54px;
 	background: $color-primary;
 	border: none;
 	cursor: pointer;

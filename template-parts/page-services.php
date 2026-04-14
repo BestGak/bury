@@ -56,17 +56,6 @@ $services_query = new WP_Query( [
                 <?php endwhile; wp_reset_postdata(); ?>
             </div>
 
-            <div class="services__footer">
-                <a href="<?php echo esc_url( home_url( '/contacts' ) ); ?>" class="btn btn--outline">
-                    <?php esc_html_e( 'Get a free quote', 'bury' ); ?>
-                    <span class="btn__icon">
-                       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="10" viewBox="0 0 18 10" fill="none">
-                            <path d="M17.21 5.505L18 4.701L17.21 3.897L17.017 3.701L13.382 0L11.955 1.402L14.215 3.7H0V5.7H14.214L11.956 8L13.382 9.402L17.017 5.7L17.21 5.505Z" fill="white"/>
-                        </svg>
-                    </span>
-                </a>
-            </div>
-
         </div>
     </section>
     <?php endif; ?>

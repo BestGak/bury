@@ -152,8 +152,18 @@ h5 { @include h5; }
 	text-decoration: none;
 	transition: all .5s;
 
-	&--secondary { background-color: $color-secondary; }
-	&--third     { background-color: $color-third; }
+	&--secondary {
+		 background-color: $color-secondary; 
+		 &:hover {
+			background-color: #00918D;
+		 }
+	}
+	&--third     { 
+		background-color: $color-third; 
+		&:hover {
+			background-color: #16223B;
+		}
+	}
 	&--silver     { background-color: $color-silver;color: $color-primary;
 	&:hover {
 		background: $color-primary;
@@ -230,7 +240,7 @@ main ul {
 
 	li {
 		@include p1-medium;
-		color: $color-third;
+		color: $color-primary;
 		display: flex;
 		align-items: flex-start;
 		gap: 16px;
@@ -241,7 +251,8 @@ main ul {
 			width: 24px;
 			height: 24px;
 			background-image: url('../images/ul-arrow.svg');
-			background-size: contain;
+			background-position: center center;
+			background-size: cover;
 			background-repeat: no-repeat;
 			flex-shrink: 0;
 			margin-top: 2px;

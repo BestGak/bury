@@ -32,7 +32,9 @@ $post_date               = get_the_date( 'j F, Y' );
                 $alt = is_array( $img ) ? ( $img['alt'] ?? '' ) : '';
             ?>
             <div class="gallery__item">
-                <img src="<?php echo esc_url( $src ); ?>" alt="<?php echo esc_attr( $alt ); ?>" loading="lazy">
+                <a href="<?php echo esc_url( $src ); ?>" class="glightbox" data-gallery="project-gallery" data-description="<?php echo esc_attr( $alt ); ?>">
+                    <img src="<?php echo esc_url( $src ); ?>" alt="<?php echo esc_attr( $alt ); ?>" loading="lazy">
+                </a>
             </div>
             <?php endforeach; ?>
         </div>
@@ -117,7 +119,7 @@ if ( $content ) :
 $current_id   = get_the_ID();
 $similar_args = [
     'post_type'      => 'projects',
-    'posts_per_page' => 8,
+    'posts_per_page' => 6,
     'post_status'    => 'publish',
     'post__not_in'   => [ $current_id ],
     'orderby'        => 'date',

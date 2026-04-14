@@ -185,7 +185,7 @@
 	align-items: center;
 	gap: 6px;
 	font-size: 12px;
-	color: $color-disabled;
+	color: $color-primary;
 	margin: 0;
 
 	svg {
@@ -212,7 +212,7 @@
 
 .project-card__excerpt {
 	font-size: 14px;
-	color: $color-disabled;
+	color: $color-primary;
 	line-height: 1.6;
 	margin: 0;
 	flex: 1;
@@ -408,7 +408,7 @@
 
 .similar-projects__subtitle {
 	@include p2;
-	color: $color-disabled;
+	color: $color-primary;
 	margin: 0;
 }
 
@@ -426,12 +426,12 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: 44px;
-	height: 44px;
+	padding: 0;
+	width: 42px;
+	height: 54px;
 	background: $color-primary;
 	color: $color-white;
 	border: none;
-	border-radius: 4px;
 	font-size: 24px;
 	line-height: 1;
 	cursor: pointer;

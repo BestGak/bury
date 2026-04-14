@@ -55,11 +55,9 @@ include BURY_REQUIRE_DIRECTORY . '/template-parts/content-variables.php';?>
 	</div>
 
 	<div class="header__main">
-		<div class="header__logo-wrap">
 			<a href="<?php echo home_url('/'); ?>" class="header__logo">
 				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" alt="Drylining Bury" width="220" height="60">
 			</a>
-		</div>
 
 		<nav class="header__nav">
 			<?php if ( has_nav_menu('header-menu') ) : ?>
@@ -71,7 +69,7 @@ include BURY_REQUIRE_DIRECTORY . '/template-parts/content-variables.php';?>
 			<?php endif; ?>
 		</nav>
 
-		<a href="#" class="btn btn--third header__cta">
+		<a href="<?php echo esc_url( home_url( '/contacts/#cform' ) ); ?>" class="btn btn--third header__cta">
 			<?= __('Get a free quote' , 'bury') ?>
 			<img src="<?php echo get_template_directory_uri(); ?>/assets/images/header-arrow.svg" alt="arrow" aria-hidden="true">
 		</a>
@@ -102,7 +100,7 @@ include BURY_REQUIRE_DIRECTORY . '/template-parts/content-variables.php';?>
 					'items_wrap'     => '<ul class="header__mobile-nav-list">%3$s</ul>',
 				]); ?>
 			<?php endif; ?>
-			<a href="#" class="btn btn--third header__mobile-cta">
+			<a href="<?php echo esc_url( home_url( '/contacts/#cform' ) ); ?>" class="btn btn--third header__mobile-cta">
 				<?= __('Get a free quote' , 'bury') ?>
 				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/header-arrow.svg" alt="Button" aria-hidden="true">
 			</a>

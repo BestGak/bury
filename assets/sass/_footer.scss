@@ -219,8 +219,9 @@ ul.footer__contacts {
 	}
 
 	&:hover {
-		border-color: $color-secondary;
-		color: $color-secondary;
+		border-color: $color-white;
+		color: $color-white;
+		background-color: $color-secondary;
 	}
 }
 

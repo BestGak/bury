@@ -96,14 +96,13 @@
     border-radius: 0 20px 20px 20px;
     position: relative;
     &::after {
-         content: '';
+        content: '';
+        background: url(../images/triangle.svg) center center / cover no-repeat;
         position: absolute;
         top: 0%; 
-        right: 100%;
-        border: 10px solid transparent;
-        border-right-color: #fff; 
-        border-top-color: #fff;
-        border-radius: 30px 0 0 0;
+        right: calc(100% - 3px);
+        width: 19px;
+        height: 25px;
     }
 }
 
@@ -136,6 +135,20 @@
 	align-items: center;
 	gap: 12px;
 	text-decoration: none;
+	& strong , & span {
+		transition: all .5s;
+	}
+	&:hover  {
+		& .hero__phone-icon {
+			background: $color-secondary;
+		}
+		& .hero__phone-icon svg path {
+			fill: $color-white;
+		}
+		& strong , & span {
+			color: #CAFFFD;
+		}
+	}
 }
 
 .hero__phone-icon {
@@ -144,7 +157,9 @@
 	justify-content: center;
 	width: 44px;
 	height: 44px;
-	background: $color-secondary;
+	background: $color-white;
+	border: 1px solid $color-secondary;
+	transition: all .5s;
 	flex-shrink: 0;
 }
 
@@ -170,15 +185,18 @@
 	align-items: center;
 	gap: 12px;
 	background: $color-white;
-	padding: 14px 20px;
+	padding: 8px 12px;
 	flex-shrink: 0;
+    border-radius: 6px;
 	align-self: flex-end;
-
+	transition: all .5s;
 	@media (max-width: $bp-tablet) {
 		align-self: stretch;
         align-items: center;
 	}
-
+	&:hover {
+		background: #E2E7EC;
+	}
 	img {
 		width: 36px;
 		height: 36px;

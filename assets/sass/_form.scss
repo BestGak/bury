@@ -78,6 +78,17 @@
 	align-items: center;
 	gap: 14px;
 	text-decoration: none;
+	&:hover  {
+		& .cform__contact-icon {
+			background: $color-secondary;
+		}
+		& .cform__contact-icon svg path {
+			fill: $color-white;
+		}
+		& strong , & span {
+			color: #CAFFFD;
+		}
+	}
 }
 
 .cform__contact-icon {
@@ -90,6 +101,7 @@
     background-color: rgba($color-white, 1);
 	color: $color-secondary;
 	flex-shrink: 0;
+	transition: all .5s;
 }
 
 .cform__contact-text {

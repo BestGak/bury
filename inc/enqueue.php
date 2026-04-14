@@ -22,4 +22,9 @@ function enqueue_script_styles() {
     'post_id'  => get_the_ID(),
     'nonce'    => wp_create_nonce('bury_ajax_nonce'),
     ]);
+
+  if ( is_singular('projects') ) {
+    wp_enqueue_style( 'glightbox-css', 'https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css', [], null );
+    wp_enqueue_script( 'glightbox-js', 'https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js', [], null, true );
+  }
 }

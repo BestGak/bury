@@ -4,7 +4,7 @@ $current_id = get_the_ID();
 
 $projects_query = new WP_Query( [
 		'post_type'      => 'projects',
-		'posts_per_page' => 8,
+		'posts_per_page' => 6,
 		'post_status'    => 'publish',
 		'orderby'        => 'date',
 		'order'          => 'DESC',
@@ -12,7 +12,7 @@ $projects_query = new WP_Query( [
 
 $services_query = new WP_Query( [
     'post_type'      => 'services',
-    'posts_per_page' => -1,
+    'posts_per_page' => 6,
     'post_status'    => 'publish',
     'post__not_in'   => [ $current_id ],
     'orderby'        => 'date',
@@ -129,7 +129,7 @@ $thumb_url = has_post_thumbnail()
                         <li>Perfect surface preparation ready for painting</li>
                     </ul>
                     <div class="process-block__cta">
-                        <a href="<?php echo esc_url( home_url( '/contacts/#contact' ) ); ?>" class="btn btn--secondary">
+                        <a href="<?php echo esc_url( home_url( '/contacts/#cform' ) ); ?>" class="btn btn--secondary">
                             <?php esc_html_e( 'Get a free quote', 'bury' ); ?>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <g clip-path="url(#clip0_312_10346)">
@@ -330,7 +330,7 @@ $thumb_url = has_post_thumbnail()
                     <?php esc_html_e( ' to speak with one of our renovation specialists and start your project with confidence.', 'bury' ); ?>
                 </p>
                 <div class="service-cta__actions">
-                    <a href="<?php echo esc_url( home_url( '/contacts/#contact' ) ); ?>" class="btn btn--secondary">
+                    <a href="<?php echo esc_url( home_url( '/contacts/#cform' ) ); ?>" class="btn btn--secondary">
                         <?php esc_html_e( 'Get a free quote', 'bury' ); ?>
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="10" viewBox="0 0 18 10" fill="none">
                                 <path d="M17.21 5.505L18 4.701L17.21 3.897L17.017 3.701L13.382 0L11.955 1.402L14.215 3.7H0V5.7H14.214L11.956 8L13.382 9.402L17.017 5.7L17.21 5.505Z" fill="white"/>

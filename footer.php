@@ -43,24 +43,23 @@ include BURY_REQUIRE_DIRECTORY . '/template-parts/content-variables.php';
 						]); ?>
 				</div>
                 <?php endif; ?>
-
+                <?php if ( has_nav_menu('footer-menu-second') ) : ?>
 				<div class="footer__col">
 					<p class="footer__col-title"><?= __('Services', 'bury') ?></p>
-					<ul class="footer__nav-list">
-						<li class="footer__nav-item"><a href="#" class="footer__nav-link">Tape & Jointing</a></li>
-						<li class="footer__nav-item"><a href="#" class="footer__nav-link">Drylining (1st & 2nd Fix)</a></li>
-						<li class="footer__nav-item"><a href="#" class="footer__nav-link">Painting & Decorating</a></li>
-						<li class="footer__nav-item"><a href="#" class="footer__nav-link">Suspended Ceilings</a></li>
-					</ul>
+					<?php wp_nav_menu([
+							'theme_location' => 'footer-menu-second',
+							'container'      => false,
+							'items_wrap'     => '<ul class="footer__nav-list">%3$s</ul>',
+						]); ?>
 				</div>
-
+                <?php endif; ?>
 				<div class="footer__col">
 					<p class="footer__col-title"><?= __('Services Area', 'bury') ?></p>
 					<ul class="footer__nav-list footer__nav-list--area">
-						<li class="footer__nav-item"><a href="#" class="footer__nav-link">Bury</a></li>
-						<li class="footer__nav-item"><a href="#" class="footer__nav-link">Manchester</a></li>
-						<li class="footer__nav-item"><a href="#" class="footer__nav-link">Rochdale</a></li>
-						<li class="footer__nav-item"><a href="#" class="footer__nav-link">Greater Manchester</a></li>
+						<li class="footer__nav-item"><div class="footer__nav-link">Bury</div></li>
+						<li class="footer__nav-item"><div class="footer__nav-link">Manchester</div></li>
+						<li class="footer__nav-item"><div class="footer__nav-link">Rochdale</div></li>
+						<li class="footer__nav-item"><div class="footer__nav-link">Greater Manchester</div></li>
 					</ul>
 				</div>
 

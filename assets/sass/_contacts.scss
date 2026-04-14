@@ -31,9 +31,13 @@
 	transition: border-color 0.2s;
     width: 100%;
     transition: all .5s;
-
+	& .contacts__card-value {
+		transition: all .5s;
+	}
 	&:hover {
-		border-color: $color-primary;
+		& .contacts__card-value {
+			color: $color-secondary;
+		}
 	}
 
 	@media (max-width: $bp-tablet) {
@@ -99,7 +103,8 @@
 	}
 
 	&:hover {
-		border-color: $color-secondary;
-		color: $color-secondary;
+		border-color: $color-white;
+		color: $color-white;
+		background-color: $color-secondary;
 	}
 }

@@ -4,8 +4,9 @@
 
 .header {
 	position: fixed;
+	position: absolute;
 	width: 100%;
-	top: 20px;
+	top: 0px;
 	z-index: 100;
 	@media screen and (max-width: $bp-table-full) {
 		top: 0;
@@ -49,11 +50,12 @@
 	border: 1px solid rgba($color-white, 0.3);
 	color: $color-white;
 	text-decoration: none;
-	transition: border-color 0.2s;
+	transition: all 0.5s;
 
 	&:hover {
-		border-color: $color-secondary;
-		color: $color-secondary;
+		border-color: $color-white;
+		color: $color-white;
+		background-color: $color-secondary;
 	}
 }
 
@@ -103,11 +105,26 @@
 .header__main {
 	display: flex;
 	align-items: stretch;
+	align-items: center;
 	background-color: $color-white;
 	box-shadow: 0 0 170px 0 rgba(28, 42, 70, 0.07), 0 0 74.109px 0 rgba(28, 42, 70, 0.05), 0 0 27.625px 0 rgba(28, 42, 70, 0.04), 0 0 9.828px 0 rgba(28, 42, 70, 0.02);
 	@media screen and (max-width: $bp-table-full) {
 		padding: 10px;
 	}
+}
+
+.header__main--sticky {
+	position: fixed !important;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 100;
+	animation: headerSlideDown 0.35s ease forwards;
+}
+
+@keyframes headerSlideDown {
+	from { transform: translateY(-100%); }
+	to   { transform: translateY(0); }
 }
 
 .header__logo-wrap {
@@ -128,11 +145,16 @@
 .header__logo {
 	display: flex;
 	align-items: center;
-
+	height: 100%;
+	max-width: 240px;
+	@media screen and (max-width: $bp-mobile) {
+		max-width: 137px;
+		width: 100%;
+	}
 	img {
 		display: block;
-		height: 60px;
 		width: auto;
+		height: 100%;
 	}
 }
 
@@ -195,7 +217,7 @@
 	align-self: stretch;
 	display: flex;
 	align-items: center;
-	margin: 10px 15px 10px 0;
+	margin: 9px 15px 9px 0;
 	@media (max-width: $bp-table-full) {
 		display: none;
 	}
